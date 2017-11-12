@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~  kanellov/password-strength-validator
+  ~
+  ~ @link https://github.com/kanellov/password-strength-validator for the canonical source repository
+  ~ @copyright Copyright (c) 2017 International Labour Organization
+  ~ @license GNU GPLv3 http://www.gnu.org/licenses/gpl-3.0-standalone.html
+  ~
+  -->
+
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="vendor/phpunit/phpunit/phpunit.xsd"
+         bootstrap="vendor/autoload.php"
+         colors="true">
+    <testsuites>
+        <testsuite name="password-strength-validator">
+            <directory>./test</directory>
+        </testsuite>
+    </testsuites>
+
+    <filter>
+        <whitelist>
+            <directory suffix=".php">./src</directory>
+        </whitelist>
+    </filter>
+</phpunit>

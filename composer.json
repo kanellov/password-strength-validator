@@ -1,7 +1,7 @@
 {
     "name": "kanellov/password-strength-validator",
     "type": "library",
-    "description": "A Zend Validator for checking password strength",
+    "description": "A validator for checking password strength.cocom",
     "license": "GNU GPLv3",
     "keywords": ["validator","password","zend","zend-validator"],
     "homepage": "https://github.com/kanellov/password-strength-validator",
@@ -13,23 +13,29 @@
         }
     ],
     "require": {
-        "php": ">=5.3.0",
-        "zendframework/zend-validator": "^2"
+        "php": "^5.3 || ^7.0"
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "1.*",
         "phpunit/PHPUnit": "4.8.0",
         "satooshi/php-coveralls": "dev-master",
-        "phpunit/phpcov": "2.*"
+        "phpunit/phpcov": "2.*",
+        "zendframework/zend-validator": "^2"
+    },
+    "suggest": {
+        "zendframework/zend-validator": "Needed to support PasswordStrength Zend Validator"
     },
     "autoload": {
+        "files": [
+            "src/password_strength.php"
+        ],
         "psr-4": {
-            "Knlv\\Validator\\": "src"
+            "Knlv\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Knlv\\Validator\\": "test"
+            "KnlvTest\\": "test"
         }
     }
 }
