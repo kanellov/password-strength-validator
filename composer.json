@@ -16,10 +16,10 @@
         "php": "^5.3 || ^7.0"
     },
     "require-dev": {
-        "friendsofphp/php-cs-fixer": "1.*",
-        "phpunit/PHPUnit": "4.8.0",
-        "satooshi/php-coveralls": "dev-master",
-        "phpunit/phpcov": "2.*",
+        "doctrine/instantiator": "1.0.5",
+        "phpdocumentor/reflection-docblock": "^2.0",
+        "symfony/yaml": "^2.0",
+        "phpunit/PHPUnit": "^4",
         "zendframework/zend-validator": "^2"
     },
     "suggest": {
