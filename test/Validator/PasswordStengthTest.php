@@ -17,23 +17,23 @@ class PasswordStengthTest extends \PHPUnit_Framework_TestCase
     public function provider()
     {
         return array(
-            array('password', PWD_CONTAIN_UC, null, false, PasswordStrength::NO_CONTAIN_UC),
-            array('password', PWD_CONTAIN_LC, null, true, null),
-            array('Password', PWD_CONTAIN_UC, null, true, null),
-            array('PASSWORD', PWD_CONTAIN_LC, null, false, PasswordStrength::NO_CONTAIN_LC),
-            array('password', PWD_CONTAIN_DGT, null, false, PasswordStrength::NO_CONTAIN_DGT),
-            array('p4ssword', PWD_CONTAIN_DGT, null, true, null),
-            array('password', PWD_CONTAIN_SYM, null, false, PasswordStrength::NO_CONTAIN_SYM),
-            array('p@ssword', PWD_CONTAIN_SYM, null, true, null),
-            array('password', PWD_CONTAIN_DGT_OR_SYM, null, false, PasswordStrength::NO_CONTAIN_DGT_OR_SYM),
-            array('p4ssword', PWD_CONTAIN_DGT_OR_SYM, null, true, null),
-            array('p@ssowrd', PWD_CONTAIN_DGT_OR_SYM, null, true, null),
-            array('password', PWD_CONTAIN_DGT | PWD_CONTAIN_SYM, null, false, PasswordStrength::NO_CONTAIN_DGT),
-            array('p@ssw0rd', PWD_CONTAIN_DGT | PWD_CONTAIN_SYM, null, true, null),
-            array('p@ssw0rd', PWD_CONTAIN_DGT | PWD_CONTAIN_SYM | PWD_CONTAIN_UC, null, false, PasswordStrength::NO_CONTAIN_UC),
-            array('P@ssw0rd', PWD_CONTAIN_DGT | PWD_CONTAIN_SYM | PWD_CONTAIN_UC, null, true, null),
-            array('password!', PWD_CONTAIN_SYM, null, true, null),
-            array('password!', PWD_CONTAIN_SYM, '!', false, PasswordStrength::NO_CONTAIN_SYM),
+            array('password', KNLV_PWD_CONTAIN_UC, null, false, PasswordStrength::NO_CONTAIN_UC),
+            array('password', KNLV_PWD_CONTAIN_LC, null, true, null),
+            array('Password', KNLV_PWD_CONTAIN_UC, null, true, null),
+            array('PASSWORD', KNLV_PWD_CONTAIN_LC, null, false, PasswordStrength::NO_CONTAIN_LC),
+            array('password', KNLV_PWD_CONTAIN_DGT, null, false, PasswordStrength::NO_CONTAIN_DGT),
+            array('p4ssword', KNLV_PWD_CONTAIN_DGT, null, true, null),
+            array('password', KNLV_PWD_CONTAIN_SYM, null, false, PasswordStrength::NO_CONTAIN_SYM),
+            array('p@ssword', KNLV_PWD_CONTAIN_SYM, null, true, null),
+            array('password', KNLV_PWD_CONTAIN_DGT_OR_SYM, null, false, PasswordStrength::NO_CONTAIN_DGT_OR_SYM),
+            array('p4ssword', KNLV_PWD_CONTAIN_DGT_OR_SYM, null, true, null),
+            array('p@ssowrd', KNLV_PWD_CONTAIN_DGT_OR_SYM, null, true, null),
+            array('password', KNLV_PWD_CONTAIN_DGT | KNLV_PWD_CONTAIN_SYM, null, false, PasswordStrength::NO_CONTAIN_DGT),
+            array('p@ssw0rd', KNLV_PWD_CONTAIN_DGT | KNLV_PWD_CONTAIN_SYM, null, true, null),
+            array('p@ssw0rd', KNLV_PWD_CONTAIN_DGT | KNLV_PWD_CONTAIN_SYM | KNLV_PWD_CONTAIN_UC, null, false, PasswordStrength::NO_CONTAIN_UC),
+            array('P@ssw0rd', KNLV_PWD_CONTAIN_DGT | KNLV_PWD_CONTAIN_SYM | KNLV_PWD_CONTAIN_UC, null, true, null),
+            array('password!', KNLV_PWD_CONTAIN_SYM, null, true, null),
+            array('password!', KNLV_PWD_CONTAIN_SYM, '!', false, PasswordStrength::NO_CONTAIN_SYM),
         );
     }
     public function testSetGetExcludedSymbols()
@@ -47,7 +47,7 @@ class PasswordStengthTest extends \PHPUnit_Framework_TestCase
     public function testSetGetFlags()
     {
         $validator = new PasswordStrength();
-        $expected = PWD_CONTAIN_SYM | PWD_CONTAIN_UC;
+        $expected = KNLV_PWD_CONTAIN_SYM | KNLV_PWD_CONTAIN_UC;
         $validator->setFlags($expected);
         $this->assertEquals($expected, $validator->getFlags());
     }

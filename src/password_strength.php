@@ -13,23 +13,23 @@ namespace Knlv;
 /*
  * Password should contain at least one digit
  */
-define('PWD_CONTAIN_DGT', 0x01);
+define('KNLV_PWD_CONTAIN_DGT', 0x01);
 /*
  * Password should contain at least one lowercase character
  */
-define('PWD_CONTAIN_LC', 0x02);
+define('KNLV_PWD_CONTAIN_LC', 0x02);
 /*
  * Password should contain at least one uppercase character
  */
-define('PWD_CONTAIN_UC', 0x04);
+define('KNLV_PWD_CONTAIN_UC', 0x04);
 /*
  * Password should contain at least one symbol character
  */
-define('PWD_CONTAIN_SYM', 0x08);
+define('KNLV_PWD_CONTAIN_SYM', 0x08);
 /*
  * Password should container either one digit or one symbol character
  */
-define('PWD_CONTAIN_DGT_OR_SYM', 0x10);
+define('KNLV_PWD_CONTAIN_DGT_OR_SYM', 0x10);
 
 /**
  * Checks if password is strong enough according the given flags.
@@ -37,11 +37,11 @@ define('PWD_CONTAIN_DGT_OR_SYM', 0x10);
  * @param string      $password        the password to check
  * @param int         $flags           [optional] - Default PWD_CONTAIN_DGT <p>
  *                                     Specify either a bitmask, or of the following named constants for what should the password contain
- *                                     PWD_CONTAIN_DGT,
- *                                     PWD_CONTAIN_LC,
- *                                     PWD_CONTAIN_UC,
- *                                     PWD_CONTAIN_SYM,
- *                                     PWD_CONTAIN_NUM_OR_SYM
+ *                                     KNLV_PWD_CONTAIN_DGT,
+ *                                     KNLV_PWD_CONTAIN_LC,
+ *                                     KNLV_PWD_CONTAIN_UC,
+ *                                     KNLV_PWD_CONTAIN_SYM,
+ *                                     KNLV_PWD_CONTAIN_DGT_OR_SYM
  *                                     </p>
  * @param string|null $exclude_symbols [optional] <p>
  *                                     Specify which symbols should be excluded
@@ -58,27 +58,27 @@ function password_strength($password, $flags = 0x01, $exclude_symbols = null)
     }
 
     $has_digits = 1 === preg_match('/[0-9]/', $password);
-    if ($flags & PWD_CONTAIN_DGT && !$has_digits) {
-        throw new \ErrorException('Password must contain at least one digit character', PWD_CONTAIN_DGT);
+    if ($flags & KNLV_PWD_CONTAIN_DGT && !$has_digits) {
+        throw new \ErrorException('Password must contain at least one digit character', KNLV_PWD_CONTAIN_DGT);
     }
 
     $has_lc = 1 === preg_match('/[a-z]/', $password);
-    if ($flags & PWD_CONTAIN_LC && !$has_lc) {
-        throw new \ErrorException('Password must contain at least one lowercase character', PWD_CONTAIN_LC);
+    if ($flags & KNLV_PWD_CONTAIN_LC && !$has_lc) {
+        throw new \ErrorException('Password must contain at least one lowercase character', KNLV_PWD_CONTAIN_LC);
     }
 
     $has_uc = 1 === preg_match('/[A-Z]/', $password);
-    if ($flags & PWD_CONTAIN_UC && !$has_uc) {
-        throw new \ErrorException('Password must contain at least one uppercase character', PWD_CONTAIN_UC);
+    if ($flags & KNLV_PWD_CONTAIN_UC && !$has_uc) {
+        throw new \ErrorException('Password must contain at least one uppercase character', KNLV_PWD_CONTAIN_UC);
     }
 
     $symbols = array_intersect(str_split($password), $symbols);
     $has_symbols = !empty($symbols);
-    if ($flags & PWD_CONTAIN_SYM && !$has_symbols) {
-        throw new \ErrorException('Password must contain at least one symbol character', PWD_CONTAIN_SYM);
+    if ($flags & KNLV_PWD_CONTAIN_SYM && !$has_symbols) {
+        throw new \ErrorException('Password must contain at least one symbol character', KNLV_PWD_CONTAIN_SYM);
     }
 
-    if ($flags & PWD_CONTAIN_DGT_OR_SYM && !$has_symbols && !$has_digits) {
-        throw new \ErrorException('Password must contain at least one digit or symbol character', PWD_CONTAIN_DGT_OR_SYM);
+    if ($flags & KNLV_PWD_CONTAIN_DGT_OR_SYM && !$has_symbols && !$has_digits) {
+        throw new \ErrorException('Password must contain at least one digit or symbol character', KNLV_PWD_CONTAIN_DGT_OR_SYM);
     }
 }

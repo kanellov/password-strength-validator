@@ -19,11 +19,11 @@ use Zend\Validator\AbstractValidator;
  */
 class PasswordStrength extends AbstractValidator
 {
-    const NO_CONTAIN_DGT = 0x01;
-    const NO_CONTAIN_LC = 0x02;
-    const NO_CONTAIN_UC = 0x04;
-    const NO_CONTAIN_SYM = 0x08;
-    const NO_CONTAIN_DGT_OR_SYM = 0x10;
+    const NO_CONTAIN_DGT = KNLV_PWD_CONTAIN_DGT;
+    const NO_CONTAIN_LC = KNLV_PWD_CONTAIN_LC;
+    const NO_CONTAIN_UC = KNLV_PWD_CONTAIN_UC;
+    const NO_CONTAIN_SYM = KNLV_PWD_CONTAIN_SYM;
+    const NO_CONTAIN_DGT_OR_SYM = KNLV_PWD_CONTAIN_DGT_OR_SYM;
 
     /**
      * The message templates
